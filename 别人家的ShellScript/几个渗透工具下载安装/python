@@ -1,0 +1,69 @@
+#!/system/bin/sh
+#system como escritura y lectura
+
+
+#python (python4adnroid)
+           #Descarga
+		wget http://www.bugtraq-team.com:6013/android/interpretes/python/com.googlecode.python3forandroid-1.apk -O /data/data/com.bugtroid/com.googlecode.python3forandroid-1.apk
+		wget http://www.bugtraq-team.com:6013/android/interpretes/python/python.sh -O /data/data/com.bugtroid/python.sh
+		wget http://www.bugtraq-team.com:6013/android/interpretes/python/python.zip -O /data/data/com.bugtroid/python.zip
+		
+		wget http://www.bugtraq-team.com:6013/android/interpretes/python/lib-dynload.zip -O /data/data/com.bugtroid/lib-dynload.zip
+		wget http://www.bugtraq-team.com:6013/android/interpretes/python/lib.zip -O /data/data/com.bugtroid/lib.zip
+
+#Instalar
+chmod 777 /data/data/com.bugtroid/com.googlecode.python3forandroid-1.apk
+cd /data/data/com.bugtroid/
+pm install com.googlecode.python3forandroid-1.apk
+
+#permisos
+cd /data/data/com.bugtroid/com.googlecode.python3forandroid
+chmod 777 *
+
+
+cd /data/data/com.bugtroid/
+unzip /data/data/com.bugtroid/python.zip
+
+
+rm -r /data/data/com.googlecode.python3forandroid
+cp -r /data/data/com.bugtroid/com.googlecode.python3forandroid /data/data/
+rm -r /data/data/com.bugtroid/com.googlecode.python3forandroid
+rm /data/data/com.bugtroid/python.zip
+
+cd /data/data/com.bugtroid/
+cp /data/data/com.bugtroid/lib-dynload.zip /data/data/com.googlecode.python3forandroid/files/python3/lib/python3.2
+cd /data/data/com.googlecode.python3forandroid/files/python3/lib/python3.2
+unzip /data/data/com.googlecode.python3forandroid/files/python3/lib/python3.2/lib-dynload.zip
+chmod 777 /data/data/com.googlecode.python3forandroid/files/python3/lib/python3.2/lib-dynload/*
+rm /data/data/com.googlecode.python3forandroid/files/python3/lib/python3.2/lib-dynload.zip
+rm /data/data/com.bugtroid/lib-dynload.zip
+
+cd /data/data/com.bugtroid/
+cp /data/data/com.bugtroid/lib.zip /data/data/com.googlecode.python3forandroid/files/python3/lib
+cd /data/data/com.googlecode.python3forandroid/files/python3/lib
+unzip /data/data/com.googlecode.python3forandroid/files/python3/lib/lib.zip
+rm /data/data/com.bugtroid/lib.zip
+cd /data/data/com.googlecode.python3forandroid/files/python3/lib/
+chmod 777 /data/data/com.googlecode.python3forandroid/files/python3/lib/*
+rm /data/data/com.googlecode.python3forandroid/files/python3/lib/lib.zip
+
+chmod 777 /data/data/com.googlecode.python3forandroid/files/*
+chmod 777 /data/data/com.googlecode.python3forandroid/files/python3/*
+chmod 777 /data/data/com.googlecode.python3forandroid/files/python3/bin/*
+chmod 777 /data/data/com.googlecode.python3forandroid/files/python3/include/*
+chmod 777 /data/data/com.googlecode.python3forandroid/files/python3/include/python3.2m/*
+chmod 777 /data/data/com.googlecode.python3forandroid/files/python3/lib/python3.2/*
+chmod 777 /data/data/com.googlecode.python3forandroid/files/python3/lib/python3.2/config-3.2m/*
+
+
+#link
+#ln -s /data/data/com.googlecode.python3forandroid/files/python3/bin/python3 /system/bin/python
+mount -o remount,rw -t yaffs2 /dev/block/mtdblock7 /system
+cp /data/data/com.bugtroid/python.sh /system/bin/python
+chmod 04755 /system/bin/python
+chown root:root /system/bin/python
+mount -o remount,ro -t yaffs2 /dev/block/mtdblock7 /system
+rm /data/data/com.bugtroid/com.googlecode.python3forandroid-1.apk
+rm /data/data/com.bugtroid/python
+rm /data/data/com.bugtroid/python.sh
+rm /sdcard/Download/python

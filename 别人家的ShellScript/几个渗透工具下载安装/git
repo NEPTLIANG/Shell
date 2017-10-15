@@ -1,0 +1,28 @@
+#!/system/bin/sh
+
+mkdir /data/data/com.bugtroid/tools/
+mkdir /data/data/com.bugtroid/tools/web
+wget http://www.bugtraq-team.com:6013/android/linux/web/git.zip -O /data/data/com.bugtroid/tools/web/git.zip
+cd /data/data/com.bugtroid/tools/web
+unzip /data/data/com.bugtroid/tools/web/git.zip
+mount -o remount,rw -t yaffs2 /dev/block/mtdblock7 /system
+cp /data/data/com.bugtroid/tools/web/git/* /system/bin/
+chmod 0755 /system/bin/git*
+chmod 777 /data/data/com.bugtroid/tools
+chmod 777 /data/data/com.bugtroid/tools/web 
+chmod 777 /data/data/com.bugtroid/tools/web/git
+chmod 777 /data/data/com.bugtroid/tools/web/git/*
+mount -o remount,ro -t yaffs2 /dev/block/mtdblock7 /system
+rm /sdcard/Download/git
+rm /data/data/com.bugtroid/git
+rm /data/data/com.bugtroid/tools/web/git.zip
+
+if [ -d /data/data/com.bugtroid/tools/web/git ];
+then
+
+    touch /data/data/com.bugtroid/.git
+
+else
+   echo "No instalado."
+fi
+

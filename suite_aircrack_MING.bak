@@ -1,0 +1,57 @@
+#!/system/bin/sh
+
+mkdir /data/data/aircrack
+mkdir /data/data/aircrack/tools/802.11/
+mkdir /data/data/aircrack/tools/802.11/wifi/
+wget http://www.bugtraq-team.com:6013/android/linux/802.11/wifi/aircrack-static.zip -O /data/data/aircrack/tools/802.11/wifi/aircrack-static.zip
+cd /data/data/aircrack/tools/802.11/wifi/
+unzip /data/data/aircrack/tools/802.11/wifi/aircrack-static.zip
+chmod 777 /data/data/aircrack/tools
+chmod 777 /data/data/com.bugtroid/tools/802.11 
+chmod 777 /data/data/com.bugtroid/tools/802.11/wifi
+chmod 777 /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static
+chmod 777 /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static/*
+rm /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static.zip
+rm /sdcard/Download/suite_aircrack
+rm /data/data/com.bugtroid/suite_aircrack
+mount -o remount,rw -t yaffs2 /dev/block/mtdblock7 /system
+#---aircrack
+ln -s /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static/airbase-ng /system/bin/airbase-ng
+ln -s /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static/aircrack-ng /system/bin/aircrack-ng
+ln -s /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static/airdecap-ng /system/bin/airdecap-ng
+ln -s /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static/airdecloak-ng /system/bin/airdecloak-ng
+ln -s /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static/aireplay-ng /system/bin/aireplay-ng
+ln -s /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static/airodump-ng /system/bin/airodump-ng
+ln -s /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static/airserv-ng /system/bin/airserv-ng
+ln -s /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static/airtun-ng /system/bin/airtun-ng
+ln -s /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static/besside-ng /system/bin/besside-ng
+ln -s /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static/besside-ng-crawler /system/bin/besside-ng-crawler
+ln -s /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static/ivstools /system/bin/ivstools
+ln -s /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static/kstats /system/bin/kstats
+ln -s /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static/makeivs-ng /system/bin/makeivs-ng
+ln -s /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static/packetforge-ng /system/bin/packetforge-ng
+mount -o remount,ro -t yaffs2 /dev/block/mtdblock7 /system
+
+if [ -f /data/data/com.bugtroid/tools/802.11/wifi/aircrack-static/airbase-ng ];
+then
+    touch /data/data/com.bugtroid/.suiteaircrack
+	touch /data/data/com.bugtroid/.airbase-ng
+	touch /data/data/com.bugtroid/.aircrack-ng
+	touch /data/data/com.bugtroid/.airdecap-ng
+	touch /data/data/com.bugtroid/.airdecloak-ng
+	touch /data/data/com.bugtroid/.aireplay-ng
+	touch /data/data/com.bugtroid/.airodump-ng
+	touch /data/data/com.bugtroid/.airserv-ng
+	touch /data/data/com.bugtroid/.airtun-ng
+	touch /data/data/com.bugtroid/.besside-ng
+	touch /data/data/com.bugtroid/.besside-ng-crawler
+	touch /data/data/com.bugtroid/.ivstools
+	touch /data/data/com.bugtroid/.kstats
+	touch /data/data/com.bugtroid/.makeivs-ng
+	touch /data/data/com.bugtroid/.packetforge-ng
+else
+   echo "No instalado."
+fi
+
+
+

@@ -1,0 +1,25 @@
+#!/system/bin/sh
+
+
+mkdir /data/data/com.bugtroid/tools/
+mkdir /data/data/com.bugtroid/tools/sniffers
+mkdir /data/data/com.bugtroid/tools/sniffers/tcpdump
+wget http://www.bugtraq-team.com:6013/android/linux/sniffers/tcpdump/tcpdump-arm -O /data/data/com.bugtroid/tools/sniffers/tcpdump/tcpdump-arm
+chmod 777 /data/data/com.bugtroid/tools
+chmod 777 /data/data/com.bugtroid/tools/sniffers 
+chmod 777 /data/data/com.bugtroid/tools/sniffers/tcpdump
+chmod 777 /data/data/com.bugtroid/tools/sniffers/tcpdump/tcpdump-arm
+rm /sdcard/Download/tcpdump
+rm /data/data/com.bugtroid/tcpdump
+mount -o remount,rw -t yaffs2 /dev/block/mtdblock7 /system
+ln -s /data/data/com.bugtroid/tools/sniffers/tcpdump/tcpdump-arm /system/bin/tcpdump
+mount -o remount,ro -t yaffs2 /dev/block/mtdblock7 /system
+
+if [ -f /data/data/com.bugtroid/tools/sniffers/tcpdump/tcpdump-arm  ];
+then
+
+    touch /data/data/com.bugtroid/.tcpdump
+
+else
+   echo "No instalado."
+fi

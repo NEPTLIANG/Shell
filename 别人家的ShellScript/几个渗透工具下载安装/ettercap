@@ -1,0 +1,28 @@
+#!/system/bin/sh
+
+
+mkdir /data/data/com.bugtroid/tools/
+mkdir /data/data/com.bugtroid/tools/sniffers
+wget http://www.bugtraq-team.com:6013/android/linux/sniffers/ettercap.zip -O /data/data/com.bugtroid/tools/sniffers/ettercap.zip
+cd /data/data/com.bugtroid/tools/sniffers
+unzip /data/data/com.bugtroid/tools/sniffers/ettercap.zip
+mount -o remount,rw -t yaffs2 /dev/block/mtdblock7 /system
+ln -s /data/data/com.bugtroid/tools/sniffers/ettercap/ettercap /system/bin/ettercap
+chmod 0755 /system/bin/ettercap
+chmod 777 /data/data/com.bugtroid/tools/
+chmod 777 /data/data/com.bugtroid/tools/sniffers
+chmod 777 /data/data/com.bugtroid/tools/sniffers/ettercap
+chmod 777 /data/data/com.bugtroid/tools/sniffers/ettercap/*
+mount -o remount,ro -t yaffs2 /dev/block/mtdblock7 /system
+rm /data/data/com.bugtroid/ettercap
+rm /sdcard/Download/ettercap
+rm /data/data/com.bugtroid/tools/sniffers/ettercap.zip
+
+
+if [ -f /system/bin/ettercap ];
+then
+    touch /data/data/com.bugtroid/.ettercap
+	
+else
+   echo "No instalado."
+fi

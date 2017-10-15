@@ -1,0 +1,42 @@
+#!/system/bin/sh
+
+
+mkdir /data/data/com.bugtroid/tools/
+mkdir /data/data/com.bugtroid/tools/networking
+wget http://www.bugtraq-team.com:6013/android/linux/networking/nmap-5.61TEST4.zip -O /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4.zip
+cd /data/data/com.bugtroid/tools/networking/
+unzip /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4.zip
+chmod 777 /data/data/com.bugtroid/tools
+chmod 777 /data/data/com.bugtroid/tools/networking 
+chmod 777 /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4
+chmod 777 /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4/*
+chmod 777 /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4/bin/*
+chmod 777 /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4/share/*
+chmod 777 /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4/share/man/*
+chmod 777 /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4/share/ncat/*
+chmod 777 /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4/share/nmap/*
+chmod 777 /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4/share/nmap/nselib/*
+chmod 777 /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4/share/nmap/nselib/data/*
+chmod 777 /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4/share/nmap/nselib/data/psexec/*
+chmod 777 /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4/share/nmap/scripts/*
+
+rm /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4.zip
+rm /sdcard/Download/nmap
+rm /data/data/com.bugtroid/nmap
+mount -o remount,rw -t yaffs2 /dev/block/mtdblock7 /system
+ln -s /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4/bin/ncat /system/bin/ncat
+ln -s /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4/bin/nmap /system/bin/nmap
+ln -s /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4/bin/nping /system/bin/nping
+mount -o remount,ro -t yaffs2 /dev/block/mtdblock7 /system
+
+if [ -f /data/data/com.bugtroid/tools/networking/nmap-5.61TEST4/bin/nmap ];
+then
+    touch /data/data/com.bugtroid/.nmapkit
+	touch /data/data/com.bugtroid/.nmap
+	touch /data/data/com.bugtroid/.ncat
+	touch /data/data/com.bugtroid/.nping
+	touch /data/data/com.bugtroid/.ndiff
+	
+else
+   echo "No instalado."
+fi

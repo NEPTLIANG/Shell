@@ -1,0 +1,27 @@
+#!/system/bin/sh
+
+
+
+mkdir /data/data/com.bugtroid/tools/
+mkdir /data/data/com.bugtroid/tools/system
+wget http://www.bugtraq-team.com:6013/android/linux/system/gcc -O /data/data/com.bugtroid/tools/system/gcc
+mount -o remount,rw -t yaffs2 /dev/block/mtdblock7 /system
+cp /data/data/com.bugtroid/tools/system/gcc /system/bin/
+chmod 0755 /system/bin/gcc
+chmod 777 /data/data/com.bugtroid/tools
+chmod 777 /data/data/com.bugtroid/tools/system 
+chmod 777 /data/data/com.bugtroid/tools/system/gcc
+mount -o remount,ro -t yaffs2 /dev/block/mtdblock7 /system
+rm /sdcard/Download/gcc
+rm /data/data/com.bugtroid/gcc
+
+
+if [ -f /data/data/com.bugtroid/tools/system/gcc ];
+then
+
+    touch /data/data/com.bugtroid/.gcc
+
+else
+   echo "No instalado."
+fi
+

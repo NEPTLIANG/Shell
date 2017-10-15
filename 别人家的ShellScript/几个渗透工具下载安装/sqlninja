@@ -1,0 +1,26 @@
+#!/system/bin/sh
+
+mkdir /data/data/com.bugtroid/tools/
+mkdir /data/data/com.bugtroid/tools/web
+wget http://www.bugtraq-team.com:6013/android/linux/web/sqlninja.zip -O /data/data/com.bugtroid/tools/web/sqlninja.zip
+cd /data/data/com.bugtroid/tools/web/
+unzip /data/data/com.bugtroid/tools/web/sqlninja.zip
+chmod 777 /data/data/com.bugtroid/tools
+chmod 777 /data/data/com.bugtroid/tools/web 
+chmod 777 /data/data/com.bugtroid/tools/web/sqlninja
+chmod 777 /data/data/com.bugtroid/tools/web/sqlninja/*
+rm /sdcard/Download/sqlninja
+rm /data/data/com.bugtroid/sqlninja
+rm /data/data/com.bugtroid/tools/web/sqlninja.zip
+
+
+
+if [ -f /data/data/com.bugtroid/tools/web/sqlninja/sqlninja ];
+then
+
+    touch /data/data/com.bugtroid/.sqlninja
+
+else
+   echo "No instalado."
+fi
+

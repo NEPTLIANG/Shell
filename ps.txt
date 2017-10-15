@@ -1,0 +1,1 @@
+$(precmd)MING@NEPTUNE:${PWD:-?} $
