@@ -1,18 +1,24 @@
 "MING's VIM配置
 syntax on  "语法高亮
 syntax enable  "语法高亮
-autocmd InsertLeave * se nocul  "用浅色高亮当前行
-autocmd InsertLeave * se cul  "用浅色高亮当前行
+"autocmd InsertLeave * se nocul  "用浅色高亮当前行
+"autocmd InsertLeave * se cul  "用浅色高亮当前行
 set nu  "显示行号
-set ruler  "显示状态栏标尺
-set tabstop=4  "tab缩进4字符
-set showmatch  "插入括号后短暂地跳转到匹配的对应括号
-"set smartindent  "为C程序提供换行后自动缩进
-set mouse=a  "启用鼠标
+"set ruler  "显示状态栏标尺
+"set showmatch  "插入括号后短暂地跳转到匹配的对应括号
+set smartindent  "换行后自动缩进
+
+"tab缩进4字符
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
+
+"set mouse=a  "启用鼠标
 
 "换行后自动缩进
-set autoindent
-set cindent
+"set autoindent
+"set cindent
 
 set cmdheight=1  "设定命令行的行数为1
 set laststatus=2  "显示状态栏（1:启动显示状态行；2：总是显示状态行）
@@ -63,37 +69,37 @@ set completeopt=preview,menu  "代码补全
 set clipboard+=unnamed  "共享剪贴板
 set autowrite  "自动保存
 "set cursorline  "突出显示当前行
-set magic  "设置魔术
-set confirm  "处理未保存或只读文件的时候弹出确认
+"set magic  "设置魔术
+"set confirm  "处理未保存或只读文件的时候弹出确认
 
 "显示中文帮助
 set helplang=cn
 set encoding=utf-8
 set langmenu=zh_cn.UTF-8
 
-filetype on  "侦测文件类型
-filetype indent on  "为特定文件类型载入相关缩进文件
+"filetype on  "侦测文件类型
+"filetype indent on  "为特定文件类型载入相关缩进文件
 "set viminfo+=!  "保存全局变量
 "set iskeyword+=_,$,@,%,#,-  "带有如下符号的单词不要被换行分割
 
 "自动补全
-:inoremap ( ()<ESC>i
-:inoremap ) <c-r>=ClosePair(')')<CR>
-:inoremap { {<CR>}<ESC>O
-:inoremap } <c-r>=ClosePair('}')<CR>
-:inoremap [ []<ESC>i
-:inoremap ] <c-r>=ClosePair(']')<CR>
-:inoremap ” “”<ESC>i
-:inoremap ' ''<ESC>i
-function! ClosePair(char)
-	if getline('.')[col('.') - 1] == a:char
-		return "\<Right>"
-	else
-		return a:char
-	endif
-endfunction
-filetype plugin indent on
+":inoremap ( ()<ESC>i
+":inoremap ) <c-r>=ClosePair(')')<CR>
+":inoremap { {<CR>}<ESC>O
+":inoremap } <c-r>=ClosePair('}')<CR>
+":inoremap [ []<ESC>i
+":inoremap ] <c-r>=ClosePair(']')<CR>
+":inoremap ” “”<ESC>i
+":inoremap ' ''<ESC>i
+"function! ClosePair(char)
+"	if getline('.')[col('.') - 1] == a:char
+"		return "\<Right>"
+"	else
+"		return a:char
+"	endif
+"endfunction
+"filetype plugin indent on
 "打开文件类型检测，加了这句才可以用智能补全
-set completeopt=longest,menu
+"set completeopt=longest,menu
 
 set pastetoggle=<F5>  "插入模式粘贴不会自动缩进避免混乱，F5开关粘贴模式
