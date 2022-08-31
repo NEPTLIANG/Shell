@@ -1,0 +1,26 @@
+#PROMPT='%F{2}%m%f:%F{30}%~%f %F{184}%n%f $'
+#PROMPT="%F{2}%B%n@%m%f:%F{30}%d%f%b $ "
+PROMPT="%F{2}%B%n%f:%F{30}%d%f%b $ "
+
+alias du="du -h -d 1"
+alias cui="cd ~/Project/console-ui"
+alias rdb="cd ~/Project/releasedb"
+alias whereishosts="echo '/etc/hosts'"
+alias pmjt="python -m json.tool"
+alias ga="git add -A"
+alias gc="git commit -s"
+alias gcm="git checkout master"
+alias gpull="git pull"
+alias grm="git rebase master"
+alias gs="git status"
+alias gd="git diff"
+alias ys="cd ~/Project/winsun-app"
+alias calc="node ~/Git/web/JavaScript/Node/get-remaining-duration/index.js"
+
+iterm2_print_user_vars() {
+  iterm2_set_user_var gitBranch $((git branch 2> /dev/null) | grep \* | cut -c3-)
+}
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
