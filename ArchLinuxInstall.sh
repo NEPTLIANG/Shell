@@ -75,6 +75,7 @@ hwclock --systohc
 
 ## 本地化
 ### 编辑 /etc/locale.gen，然后取消掉 en_US.UTF-8 UTF-8 和其他需要的区域设置前的注释（#）
+pacman -Sy
 pacman -S vim
 vim /etc/locale.gen 
 ### 接着执行 locale-gen 以生成 locale 信息
@@ -185,7 +186,6 @@ sudo pacman -S fcitx-googlepinyin
 ### 当您安装好 Fcitx 并重新登录后，Fcitx 应该会自动启动。如果没有的话，可以打开控制台并运行fcitx
 fcitx
 ### Fcitx 提供了若干图形界面的配置程序：KDE 中的 kcm-fcitx包, 基于 GTK+3 的 fcitx-configtool包
-sudo pacman -Sy
 sudo pacman -S kcm-fcitx
 sudo pacman -S fcitx-configtool
 ### 安装完配置工具fcitx-configtool包之后打开配置工具的方法是用终端运行fcitx-config-gtk3，
